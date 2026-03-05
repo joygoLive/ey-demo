@@ -3,7 +3,7 @@ EY 세무본부 AI Native 세무 플랫폼 데모
 개인소득세 공제 규칙 DSL 기반 RAG + LangGraph Agent + Human-in-the-loop 예제
 
 # 기술 스택
-- LLM: Ollama (llama3.2) + Claude API
+- LLM: Ollama (gemma3:12b) + Claude API
 - RAG: ChromaDB
 - Agent: LangGraph
 - MCP: Anthropic MCP Python SDK
