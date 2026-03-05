@@ -1,0 +1,64 @@
+{
+  "version": "2024",
+  "domain": "개인소득세",
+  "category": "공제규칙",
+  "rules": [
+    {
+      "id": "DEDUCT_001",
+      "name": "근로소득공제",
+      "description": "근로소득자에 대한 기본 공제",
+      "conditions": {
+        "income_type": "근로소득"
+      },
+      "calculation": [
+        {"range": [0, 5000000], "rate": 0.70, "max": 3500000},
+        {"range": [5000000, 15000000], "rate": 0.40, "max": 7500000},
+        {"range": [15000000, 45000000], "rate": 0.15, "max": 12000000},
+        {"range": [45000000, 100000000], "rate": 0.05, "max": 14750000},
+        {"range": [100000000, null], "rate": 0.02, "max": 20000000}
+      ]
+    },
+    {
+      "id": "DEDUCT_002",
+      "name": "인적공제_기본",
+      "description": "본인 및 부양가족 기본공제",
+      "conditions": {},
+      "calculation": [
+        {"type": "본인", "amount": 1500000},
+        {"type": "배우자", "amount": 1500000, "condition": "연소득_100만원_이하"},
+        {"type": "부양가족", "amount": 1500000, "condition": "연소득_100만원_이하_만60세이상_또는_만20세이하"}
+      ]
+    },
+    {
+      "id": "DEDUCT_003",
+      "name": "연금보험료공제",
+      "description": "국민연금 등 연금보험료 전액 공제",
+      "conditions": {},
+      "calculation": [
+        {"type": "국민연금", "rate": 1.0},
+        {"type": "공무원연금", "rate": 1.0},
+        {"type": "군인연금", "rate": 1.0}
+      ]
+    },
+    {
+      "id": "DEDUCT_004",
+      "name": "신용카드공제",
+      "description": "신용카드 등 사용금액 소득공제",
+      "conditions": {
+        "min_usage_rate": 0.25,
+        "income_type": "근로소득"
+      },
+      "calculation": [
+        {"type": "신용카드", "rate": 0.15},
+        {"type": "직불카드", "rate": 0.30},
+        {"type": "전통시장", "rate": 0.40},
+        {"type": "대중교통", "rate": 0.40}
+      ],
+      "limits": [
+        {"income_range": [0, 70000000], "max": 3000000},
+        {"income_range": [70000000, 120000000], "max": 2500000},
+        {"income_range": [120000000, null], "max": 2000000}
+      ]
+    }
+  ]
+}

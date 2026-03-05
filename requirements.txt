@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+langchain
+langgraph
+langchain-community
+langchain-ollama
+chromadb
+anthropic
+mcp
+python-dotenv
+pydantic
